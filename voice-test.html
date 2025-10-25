@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voice Assistant Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .status {
+      margin: 20px 0;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 8px;
+    }
+    .response {
+      margin: 10px 0;
+      padding: 10px;
+      background: #e3f2fd;
+      border-left: 4px solid #2196F3;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎤 Voice Assistant Test</h1>
+
+  <div class="status">
+    <strong>Status:</strong> <span id="status">Ready</span>
+  </div>
+
+  <h2>Test Voice Features:</h2>
+
+  <button onclick="testSpeak()">🔊 Test System Speaking</button>
+  <button onclick="testListen()">🎤 Test Voice Listening</button>
+  <button onclick="testQuestion()">❓ Test Question Flow</button>
+  <button onclick="setLanguage()">🌍 Set Language to Hindi</button>
+
+  <div id="responses"></div>
+
+  <script>
+    function updateStatus(msg) {
+      document.getElementById('status').textContent = msg;
+    }
+
+    function addResponse(msg) {
+      const div = document.createElement('div');
+      div.className = 'response';
+      div.textContent = msg;
+      document.getElementById('responses').prepend(div);
+    }
+
+    async function testSpeak() {
+      updateStatus('Speaking...');
+      await window.voiceAssistant.speak('Hello! This is the voice assistant speaking. Can you hear me?');
+      updateStatus('Done speaking');
+      addResponse('✅ System spoke successfully');
+    }
+
+    async function testListen() {
+      updateStatus('Listening... (speak now)');
+      window.voiceAssistant.startListening();
+
+      setTimeout(() => {
+        window.voiceAssistant.stopListening();
+        updateStatus('Stopped listening');
+      }, 5000);
+    }
+
+    async function testQuestion() {
+      updateStatus('Asking question...');
+
+      await window.voiceAssistant.askQuestion(
+        'What is your name?',
+        'name',
+        (fieldName, answer) => {
+          addResponse(`Field: ${fieldName}, Answer: ${answer}`);
+          updateStatus('Got answer: ' + answer);
+        }
+      );
+    }
+
+    function setLanguage() {
+      window.voiceAssistant.setNativeLanguage('HI'); // Hindi
+      updateStatus('Language set to Hindi');
+      addResponse('✅ Language changed to Hindi');
+    }
+
+    // Show ready message
+    if (window.voiceAssistant) {
+      addResponse('✅ Voice Assistant loaded successfully!');
+    } else {
+      addResponse('❌ Voice Assistant not found. Make sure extension is loaded.');
+    }
+  </script>
+</body>
+</html>

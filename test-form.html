@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Test Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .form-section h3 {
+            color: #555;
+            margin-top: 0;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        input[type="checkbox"] {
+            width: auto;
+        }
+        .submit-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background: #45a049;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e8;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            text-align: center;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🧪 Job Application Test Form</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Use this form to test your AI Tinkerer Resume Filler extension!
+        </p>
+        
+        <form id="testForm">
+            <!-- Personal Information -->
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state">
+                    </div>
+                    <div class="form-group">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="text" id="postalCode" name="postalCode">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" name="country">
+                            <option value="">Select Country</option>
+                            <option value="USA">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Australia">Australia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="16" max="100">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Professional Information -->
+            <div class="form-section">
+                <h3>Professional Information</h3>
+                
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <select id="experience" name="experience">
+                        <option value="">Select experience level</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-3">2-3 years</option>
+                        <option value="4-5">4-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="skills">Skills (comma-separated)</label>
+                    <textarea id="skills" name="skills" placeholder="JavaScript, Python, React, etc."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="education">Education</label>
+                    <textarea id="education" name="education" placeholder="Degree, University, Year"></textarea>
+                </div>
+            </div>
+            
+            <!-- Work Authorization -->
+            <div class="form-section">
+                <h3>Work Authorization</h3>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="workAuthorization" name="workAuthorization">
+                    <label for="workAuthorization">I am legally authorized to work in this country</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="sponsorshipNeeded" name="sponsorshipNeeded">
+                    <label for="sponsorshipNeeded">I will require sponsorship for employment visa status</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="professionalLicense" name="professionalLicense">
+                    <label for="professionalLicense">I have or am obtaining a professional license</label>
+                </div>
+            </div>
+            
+            <!-- Resume Upload -->
+            <div class="form-section">
+                <h3>Resume</h3>
+                <div class="form-group">
+                    <label for="resume">Upload Resume (PDF, DOC, DOCX)</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+                </div>
+            </div>
+            
+            <!-- Additional Information -->
+            <div class="form-section">
+                <h3>Additional Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="">Prefer not to say</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Non-binary">Non-binary</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="race">Race/Ethnicity</label>
+                        <select id="race" name="race">
+                            <option value="">Prefer not to say</option>
+                            <option value="White">White</option>
+                            <option value="Black">Black or African American</option>
+                            <option value="Hispanic">Hispanic or Latino</option>
+                            <option value="Asian">Asian</option>
+                            <option value="Native">Native American</option>
+                            <option value="Pacific">Pacific Islander</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="veteranStatus">Veteran Status</label>
+                        <select id="veteranStatus" name="veteranStatus">
+                            <option value="Not a veteran">Not a veteran</option>
+                            <option value="Veteran">Veteran</option>
+                            <option value="Protected veteran">Protected veteran</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="disabilityStatus">Disability Status</label>
+                        <select id="disabilityStatus" name="disabilityStatus">
+                            <option value="No disability">No disability</option>
+                            <option value="Have disability">I have a disability</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+        
+        <div id="status" class="status" style="display: none;">
+            Form submitted successfully! 🎉
+        </div>
+    </div>
+    
+    <script>
+        // Handle form submission
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            document.getElementById('status').style.display = 'block';
+            
+            // Scroll to status
+            document.getElementById('status').scrollIntoView({ behavior: 'smooth' });
+            
+            console.log('Form submitted with data:', new FormData(this));
+        });
+        
+        // Add some visual feedback for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test form loaded - ready for extension testing!');
+            
+            // Add a test button for manual testing
+            const testButton = document.createElement('button');
+            testButton.textContent = '🧪 Test Extension Here';
+            testButton.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                z-index: 1000;
+                font-size: 14px;
+            `;
+            testButton.onclick = function() {
+                alert('Extension test page loaded! Now use your AI Tinkerer extension to:\n1. Detect form fields\n2. Auto-fill the form');
+            };
+            document.body.appendChild(testButton);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Extension Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .step {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        .test-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .status {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 AI Tinkerer Extension Test</h1>
+        
+        <div class="step">
+            <h3>Step 1: Check Extension</h3>
+            <p>Make sure your extension is loaded and enabled in Chrome.</p>
+            <button onclick="checkExtension()">Check Extension Status</button>
+            <div id="extensionStatus" class="status" style="display:none;"></div>
+        </div>
+        
+        <div class="step">
+            <h3>Step 2: Set Up Profile</h3>
+            <p>Click the extension icon → "Manage Profile" → Fill in your details → Save</p>
+            <button onclick="openProfile()">Open Profile Page</button>
+        </div>
+        
+        <div class="step">
+            <h3>Step 3: Test Form Filling</h3>
+            <p>Use the form below to test the extension:</p>
+            
+            <div class="test-form">
+                <h4>Test Form</h4>
+                <input type="text" name="firstName" placeholder="First Name" id="testFirstName">
+                <input type="text" name="lastName" placeholder="Last Name" id="testLastName">
+                <input type="email" name="email" placeholder="Email" id="testEmail">
+                <input type="tel" name="phone" placeholder="Phone" id="testPhone">
+                <input type="text" name="address" placeholder="Address" id="testAddress">
+                <select name="experience" id="testExperience">
+                    <option value="">Select Experience</option>
+                    <option value="0-1">0-1 years</option>
+                    <option value="2-3">2-3 years</option>
+                    <option value="4-5">4-5 years</option>
+                </select>
+            </div>
+            
+            <button onclick="testFormFilling()">Test Form Filling</button>
+            <div id="testStatus" class="status" style="display:none;"></div>
+        </div>
+        
+        <div class="step">
+            <h3>Step 4: Debug Information</h3>
+            <button onclick="showDebugInfo()">Show Debug Info</button>
+            <div id="debugInfo" class="status" style="display:none;"></div>
+        </div>
+    </div>
+    
+    <script>
+        function checkExtension() {
+            const status = document.getElementById('extensionStatus');
+            status.style.display = 'block';
+            
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                status.innerHTML = '✅ Extension is loaded and ready!';
+                status.style.background = '#e8f5e8';
+                status.style.border = '1px solid #4CAF50';
+            } else {
+                status.innerHTML = '❌ Extension not detected. Make sure it\'s loaded in chrome://extensions/';
+                status.style.background = '#ffebee';
+                status.style.border = '1px solid #f44336';
+            }
+        }
+        
+        function openProfile() {
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                chrome.tabs.create({ url: chrome.runtime.getURL('profile.html') });
+            } else {
+                alert('Extension not detected. Please load the extension first.');
+            }
+        }
+        
+        function testFormFilling() {
+            const status = document.getElementById('testStatus');
+            status.style.display = 'block';
+            
+            // Check if resume filler is available
+            if (window.resumeFiller) {
+                status.innerHTML = '✅ Resume filler detected! Try using the extension buttons.';
+                status.style.background = '#e8f5e8';
+                status.style.border = '1px solid #4CAF50';
+            } else {
+                status.innerHTML = '❌ Resume filler not detected. Make sure the extension is loaded and the page is refreshed.';
+                status.style.background = '#ffebee';
+                status.style.border = '1px solid #f44336';
+            }
+        }
+        
+        function showDebugInfo() {
+            const debug = document.getElementById('debugInfo');
+            debug.style.display = 'block';
+            
+            let info = '<h4>Debug Information:</h4>';
+            info += '<p><strong>Chrome Extension:</strong> ' + (typeof chrome !== 'undefined' ? 'Available' : 'Not Available') + '</p>';
+            info += '<p><strong>Resume Filler:</strong> ' + (window.resumeFiller ? 'Available' : 'Not Available') + '</p>';
+            info += '<p><strong>Form Fields:</strong> ' + (window.resumeFiller ? window.resumeFiller.formFields.size : 'N/A') + '</p>';
+            info += '<p><strong>User Data:</strong> ' + (window.resumeFiller && window.resumeFiller.userData ? 'Available' : 'Not Available') + '</p>';
+            
+            debug.innerHTML = info;
+        }
+        
+        // Auto-check when page loads
+        window.onload = function() {
+            setTimeout(checkExtension, 1000);
+        };
+    </script>
+</body>
+</html>
