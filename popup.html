@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      height: 400px;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 300;
+    }
+    
+    .header p {
+      margin: 5px 0 0 0;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    .feature-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .feature-section h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .status {
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.7;
+      margin-top: 15px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+    }
+    
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🤖 AI Tinkerer</h1>
+    <p>Your AI experimentation companion</p>
+  </div>
+  
+  <div class="feature-section">
+    <h3>Quick Actions</h3>
+    <button id="highlightText">Highlight AI Content</button>
+    <button id="analyzePage">Analyze Page</button>
+    <button id="extractText">Extract Text</button>
+  </div>
+  
+  <div class="feature-section">
+    <h3>AI Tools</h3>
+    <input type="text" id="aiPrompt" placeholder="Enter your AI prompt...">
+    <button id="processPrompt">Process with AI</button>
+  </div>
+  
+  <div class="feature-section">
+    <h3>Settings</h3>
+    <button id="openSettings">Open Settings</button>
+    <button id="toggleMode">Toggle Mode</button>
+  </div>
+  
+  <div class="status">
+    <span id="status">Ready to tinker!</span>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

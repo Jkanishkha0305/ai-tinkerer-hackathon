@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI Tinkerer Settings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    
+    .setting-group {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .setting-group h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+    
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .setting-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    label {
+      flex: 1;
+      font-size: 14px;
+    }
+    
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #ffeb3b;
+    }
+    
+    input[type="text"], input[type="color"], select {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+    }
+    
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    button:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .status {
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 AI Tinkerer Settings</h1>
+    
+    <div class="setting-group">
+      <h3>General Settings</h3>
+      
+      <div class="setting-item">
+        <label for="mode">Extension Mode</label>
+        <select id="mode">
+          <option value="basic">Basic</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      
+      <div class="setting-item">
+        <label for="autoAnalyze">Auto-analyze pages</label>
+        <input type="checkbox" id="autoAnalyze">
+      </div>
+      
+      <div class="setting-item">
+        <label for="notifications">Show notifications</label>
+        <input type="checkbox" id="notifications">
+      </div>
+    </div>
+    
+    <div class="setting-group">
+      <h3>Highlighting Settings</h3>
+      
+      <div class="setting-item">
+        <label for="highlightColor">Highlight Color</label>
+        <input type="color" id="highlightColor" value="#ffeb3b">
+      </div>
+      
+      <div class="setting-item">
+        <label for="highlightOpacity">Highlight Opacity</label>
+        <input type="range" id="highlightOpacity" min="0.1" max="1" step="0.1" value="0.8">
+      </div>
+      
+      <div class="setting-item">
+        <label for="customKeywords">Custom AI Keywords (comma-separated)</label>
+        <input type="text" id="customKeywords" placeholder="AI, machine learning, neural networks...">
+      </div>
+    </div>
+    
+    <div class="setting-group">
+      <h3>AI Integration</h3>
+      
+      <div class="setting-item">
+        <label for="aiProvider">AI Provider</label>
+        <select id="aiProvider">
+          <option value="openai">OpenAI</option>
+          <option value="claude">Claude</option>
+          <option value="local">Local Model</option>
+        </select>
+      </div>
+      
+      <div class="setting-item">
+        <label for="apiKey">API Key (optional)</label>
+        <input type="text" id="apiKey" placeholder="Enter your API key...">
+      </div>
+      
+      <div class="setting-item">
+        <label for="model">Model</label>
+        <select id="model">
+          <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+          <option value="gpt-4">GPT-4</option>
+          <option value="claude-3">Claude 3</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="setting-group">
+      <h3>Data & Privacy</h3>
+      
+      <div class="setting-item">
+        <label for="dataCollection">Allow data collection for improvement</label>
+        <input type="checkbox" id="dataCollection">
+      </div>
+      
+      <div class="setting-item">
+        <label for="clearData">Clear stored data</label>
+        <button id="clearData">Clear All Data</button>
+      </div>
+    </div>
+    
+    <div class="status" id="status">Settings saved automatically</div>
+  </div>
+  
+  <script src="settings.js"></script>
+</body>
+</html>
