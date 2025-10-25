@@ -76,32 +76,43 @@ class ResumeFiller {
 
   detectFormFields() {
     const commonFieldMappings = {
-      // Personal Information
-      'first name': ['input[name*="first"]', 'input[id*="first"]', 'input[placeholder*="first"]'],
-      'last name': ['input[name*="last"]', 'input[id*="last"]', 'input[placeholder*="last"]'],
-      'email': ['input[type="email"]', 'input[name*="email"]', 'input[id*="email"]'],
-      'phone': ['input[type="tel"]', 'input[name*="phone"]', 'input[id*="phone"]'],
-      'address': ['input[name*="address"]', 'input[id*="address"]', 'textarea[name*="address"]'],
-      'city': ['input[name*="city"]', 'input[id*="city"]'],
-      'state': ['select[name*="state"]', 'input[name*="state"]', 'input[id*="state"]'],
-      'postal code': ['input[name*="zip"]', 'input[name*="postal"]', 'input[id*="zip"]'],
-      'country': ['select[name*="country"]', 'input[name*="country"]'],
-      'age': ['input[name*="age"]', 'input[id*="age"]', 'input[type="number"]'],
+      // Personal Information - Standard patterns
+      'first name': ['input[name*="first"]', 'input[id*="first"]', 'input[placeholder*="first"]', 'input[name="firstName"]', 'input[id="firstName"]'],
+      'last name': ['input[name*="last"]', 'input[id*="last"]', 'input[placeholder*="last"]', 'input[name="lastName"]', 'input[id="lastName"]'],
+      'email': ['input[type="email"]', 'input[name*="email"]', 'input[id*="email"]', 'input[name="email"]', 'input[id="email"]'],
+      'phone': ['input[type="tel"]', 'input[name*="phone"]', 'input[id*="phone"]', 'input[name="phone"]', 'input[id="phone"]'],
+      'address': ['input[name*="address"]', 'input[id*="address"]', 'textarea[name*="address"]', 'input[name="address"]', 'textarea[name="address"]'],
+      'city': ['input[name*="city"]', 'input[id*="city"]', 'input[name="city"]', 'input[id="city"]'],
+      'state': ['select[name*="state"]', 'input[name*="state"]', 'input[id*="state"]', 'select[name="state"]', 'input[name="state"]'],
+      'postal code': ['input[name*="zip"]', 'input[name*="postal"]', 'input[id*="zip"]', 'input[name="zipCode"]', 'input[name="zip"]'],
+      'country': ['select[name*="country"]', 'input[name*="country"]', 'select[name="country"]', 'input[name="country"]'],
+      'age': ['input[name*="age"]', 'input[id*="age"]', 'input[type="number"]', 'input[name="age"]', 'input[id="age"]'],
       
       // Professional Information
-      'experience': ['input[name*="experience"]', 'select[name*="experience"]', 'input[id*="experience"]'],
-      'skills': ['textarea[name*="skill"]', 'input[name*="skill"]', 'textarea[id*="skill"]'],
-      'education': ['textarea[name*="education"]', 'input[name*="education"]', 'textarea[id*="education"]'],
+      'experience': ['input[name*="experience"]', 'select[name*="experience"]', 'input[id*="experience"]', 'select[name="experience"]', 'input[name="experience"]'],
+      'skills': ['textarea[name*="skill"]', 'input[name*="skill"]', 'textarea[id*="skill"]', 'textarea[name="skills"]', 'input[name="skills"]'],
+      'education': ['textarea[name*="education"]', 'input[name*="education"]', 'textarea[id*="education"]', 'textarea[name="education"]', 'input[name="education"]'],
       
-      // Authorization Questions
-      'work authorization': ['input[name*="authorized"]', 'select[name*="authorized"]', 'input[id*="authorized"]'],
-      'sponsorship': ['input[name*="sponsor"]', 'select[name*="sponsor"]', 'input[id*="sponsor"]'],
-      'license': ['input[name*="license"]', 'select[name*="license"]', 'input[id*="license"]'],
+      // Authorization Questions - SmartRecruiters specific
+      'work authorization': ['input[name*="authorized"]', 'select[name*="authorized"]', 'input[id*="authorized"]', 'input[name="workAuthorization"]', 'select[name="workAuthorization"]'],
+      'sponsorship': ['input[name*="sponsor"]', 'select[name*="sponsor"]', 'input[id*="sponsor"]', 'input[name="sponsorship"]', 'select[name="sponsorship"]'],
+      'license': ['input[name*="license"]', 'select[name*="license"]', 'input[id*="license"]', 'input[name="license"]', 'select[name="license"]'],
       
-      // Resume Upload
-      'resume': ['input[type="file"]', 'input[name*="resume"]', 'input[id*="resume"]'],
-      'cv': ['input[type="file"]', 'input[name*="cv"]', 'input[id*="cv"]'],
-      'upload': ['input[type="file"]']
+      // Resume Upload - Multiple patterns
+      'resume': ['input[type="file"]', 'input[name*="resume"]', 'input[id*="resume"]', 'input[name="resume"]', 'input[name="resumeFile"]'],
+      'cv': ['input[type="file"]', 'input[name*="cv"]', 'input[id*="cv"]', 'input[name="cv"]', 'input[name="cvFile"]'],
+      'upload': ['input[type="file"]', 'input[name="file"]', 'input[id="file"]'],
+      
+      // SmartRecruiters specific fields
+      'firstName': ['input[name="firstName"]', 'input[id="firstName"]', 'input[name="first_name"]'],
+      'lastName': ['input[name="lastName"]', 'input[id="lastName"]', 'input[name="last_name"]'],
+      'zipCode': ['input[name="zipCode"]', 'input[name="zip"]', 'input[id="zipCode"]'],
+      
+      // Additional common fields
+      'gender': ['select[name*="gender"]', 'input[name*="gender"]', 'select[name="gender"]', 'input[name="gender"]'],
+      'race': ['select[name*="race"]', 'input[name*="race"]', 'select[name="race"]', 'input[name="race"]'],
+      'veteran': ['select[name*="veteran"]', 'input[name*="veteran"]', 'select[name="veteranStatus"]', 'input[name="veteranStatus"]'],
+      'disability': ['select[name*="disability"]', 'input[name*="disability"]', 'select[name="disabilityStatus"]', 'input[name="disabilityStatus"]']
     };
 
     this.formFields.clear();
